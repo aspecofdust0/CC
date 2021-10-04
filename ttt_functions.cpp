@@ -6,6 +6,7 @@ std::string gridValue[9] = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
 bool winner_is_player1 = true;
 bool winner_is_player2 = true;
 int input, input2;
+bool Bool = true;
 
 void check_end() {
 
@@ -140,13 +141,11 @@ void draw() {
 
 }
 
-
 void mainF() {
 
-  for (int i=0; i<= 9; i++) {
+for (int i=0; i<9; i++) {
 
-   while (winner_is_player1 == true && winner_is_player2 == true) {
-
+ if (Bool) {
   std::cout << "Player 1: ";
   std::cin >> input;
 
@@ -163,11 +162,13 @@ void mainF() {
   gridValue[input-1] = "O";
   draw();
   check_end();
-
+}
+ else {
   if (winner_is_player1 == true && winner_is_player2 == true) {
 
   std::cout << "Player 2: ";
   std::cin >> input2;
+
 
   while (input2 > 9 || input2 < 1) {
     std::cout << "\n invalid input. try again.\n\n";
@@ -181,12 +182,13 @@ void mainF() {
   gridValue[input2-1] =  "X";
   draw();
   check_end();
-        }
-
       }
     }
 
-    if (winner_is_player1 == true && winner_is_player2 == true) {
-      std::cout << "game was a tie.\n";
+Bool = !Bool;
+     }
+
+     if (winner_is_player1 == true && winner_is_player2 == true) {
+       std::cout << "\n game was a tie\n";
+     }
     }
-  }
